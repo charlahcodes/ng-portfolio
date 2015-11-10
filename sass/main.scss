@@ -1,0 +1,39 @@
+// Put any @imports here
+// See Readme for a list of supported ones
+@import "foundation";
+
+body {
+  background: #162B37;
+  color: #EBEDED;
+}
+
+h1 {
+  color: #D6882D;
+}
+
+h2 {
+  color: #D6882D;
+}
+
+.top-bar {
+  color: #D6882D;
+  background-color: #253842;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background-color: #253842;
+  color: #EBEDED;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+  background-color: #D6882D;
+}
+
+.top-bar .name h1 a {
+  color: #D6882D;
+}
+
+.container {
+  width: 500px;
+  margin: 15px auto;
+}
