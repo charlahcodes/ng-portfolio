@@ -1,0 +1,10 @@
+<div class="addPhoto">
+  <h2>Add Photo</h2>
+
+  <form ng-submit="addPhoto(photo)">
+    <input placeholder="Title" ng-model="photo.title">
+    <input placeholder="URL" ng-model="photo.url">
+    <textarea placeholder="Description" ng-model="photo.description"></textarea>
+    <button>Submit</button>
+  </form>
+</div>

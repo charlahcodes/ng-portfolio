@@ -1,8 +1,12 @@
-<h2>View photos</h2>
+<div class="photoList">
+  <h2>Photography</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <a href="#/add"><button>Add photo</button></a>
+  <div class="thumbnail">
+    <ul>
+      <li ng-repeat="photo in photos">
+        <a href="#/single/{{photo.objectId}}"><img src="{{photo.url}}"></a>
+      </li>
+    </ul>
+  </div>
+</div>

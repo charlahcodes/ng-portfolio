@@ -6401,6 +6401,9 @@ h2 {
   color: #D6882D;
   background-color: #253842; }
 
+.test {
+  background-color: white; }
+
 .top-bar-section li:not(.has-form) a:not(.button) {
   background-color: #253842;
   color: #EBEDED; }
@@ -6414,5 +6417,41 @@ h2 {
 .container {
   width: 500px;
   margin: 15px auto; }
+  .container a {
+    color: #EBEDED; }
+
+.photoList .thumbnail ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .photoList .thumbnail ul li {
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid #D6882D; }
+    .photoList .thumbnail ul li img {
+      height: 200px; }
+
+.photoList button {
+  background-color: #D6882D; }
+  .photoList button a {
+    color: #EBEDED; }
+
+.photoList button:hover {
+  background-color: #253842; }
+  .photoList button:hover a {
+    color: #D6882D; }
+
+.singlePhoto ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.addPhoto button {
+  background-color: #D6882D;
+  color: #EBEDED; }
+
+.addPhoto button:hover {
+  background-color: #253842;
+  color: #D6882D; }
 
 /*# sourceMappingURL=main.css.map */

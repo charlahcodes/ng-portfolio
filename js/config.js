@@ -6,7 +6,7 @@ let config = function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      controller: 'HomeController',
+      // controller: 'HomeController',
       templateUrl: 'templates/home.tpl.html'
     })
     .state('root', {
@@ -16,18 +16,28 @@ let config = function ($stateProvider, $urlRouterProvider) {
     })
     .state('root.about', {
       url: '/about',
-      controller: 'HomeController',
+      // controller: 'HomeController',
       templateUrl: 'templates/about.tpl.html'
     })
     .state('root.coding', {
       url: '/coding',
-      controller: 'HomeController',
+      // controller: 'HomeController',
       templateUrl: 'templates/coding.tpl.html'
     })
     .state('root.photography', {
       url: '/photography',
-      controller: 'HomeController',
+      controller: 'ListController',
       templateUrl: 'templates/viewphotos.tpl.html'
+    })
+    .state('root.single', {
+      url: '/single/:photoId',
+      controller: 'SingleController',
+      templateUrl: 'templates/singlephoto.tpl.html'
+    })
+    .state('root.addphoto', {
+      url: '/add',
+      controller: 'AddPhotoController',
+      templateUrl: 'templates/addphoto.tpl.html'
     });
 
 
