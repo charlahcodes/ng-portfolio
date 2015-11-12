@@ -38,10 +38,12 @@ let config = function ($stateProvider, $urlRouterProvider) {
       url: '/add',
       controller: 'AddPhotoController',
       templateUrl: 'templates/addphoto.tpl.html'
+    })
+    .state('root.edit', {
+      url: '/edit/:photoId',
+      controller: 'EditController',
+      templateUrl: 'templates/edit.tpl.html'
     });
-
-
-
 };
 
 config.$inject = ['$stateProvider', '$urlRouterProvider'];

@@ -1,12 +1,10 @@
 <div class="photoList">
-  <h2>Photography</h2>
-
   <a href="#/add"><button>Add photo</button></a>
-  <div class="thumbnail">
-    <ul>
-      <li ng-repeat="photo in photos">
-        <a href="#/single/{{photo.objectId}}"><img src="{{photo.url}}"></a>
-      </li>
-    </ul>
+  <div class="row thumbnailList">
+    <div class="small-2 large-4 columns thumbnail" ng-repeat="photo in photos">
+      <a href="#/single/{{photo.objectId}}">
+        <img src="{{photo.url}}">
+      </a>
+    </div>
   </div>
 </div>

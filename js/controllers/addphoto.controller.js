@@ -1,24 +1,14 @@
-let AddPhotoController = function($scope, $http, PARSE) {
-
-  // parse will create class for you
-  let url = PARSE.URL + 'classes/photo_gallery';
+let AddPhotoController = function($scope, PhotosService, $state) {
   
-  let Photo = function (obj) {
-    this.title = obj.title;
-    this.url = obj.url;
-    this.description = obj.description;
-  };
-
   $scope.addPhoto = (obj) => {
-    let p = new Photo(obj);
-    $http.post(url, p, PARSE.CONFIG).then( (res) => {
+    PhotosService.addPhoto(obj).then( (res) => {
       $scope.photo = {};
-      location.assign('#/photography');
+      $state.go('root.photography');
     });
   };
   
 };
 
-AddPhotoController.$inject = ['$scope', '$http', 'PARSE'];
+AddPhotoController.$inject = ['$scope', 'PhotosService', '$state'];
 
 export default AddPhotoController;

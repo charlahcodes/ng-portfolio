@@ -37,6 +37,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/add',
     controller: 'AddPhotoController',
     templateUrl: 'templates/addphoto.tpl.html'
+  }).state('root.edit', {
+    url: '/edit/:photoId',
+    controller: 'EditController',
+    templateUrl: 'templates/edit.tpl.html'
   });
 };
 
@@ -51,27 +55,17 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddPhotoController = function AddPhotoController($scope, $http, PARSE) {
-
-  // parse will create class for you
-  var url = PARSE.URL + 'classes/photo_gallery';
-
-  var Photo = function Photo(obj) {
-    this.title = obj.title;
-    this.url = obj.url;
-    this.description = obj.description;
-  };
+var AddPhotoController = function AddPhotoController($scope, PhotosService, $state) {
 
   $scope.addPhoto = function (obj) {
-    var p = new Photo(obj);
-    $http.post(url, p, PARSE.CONFIG).then(function (res) {
+    PhotosService.addPhoto(obj).then(function (res) {
       $scope.photo = {};
-      location.assign('#/photography');
+      $state.go('root.photography');
     });
   };
 };
 
-AddPhotoController.$inject = ['$scope', '$http', 'PARSE'];
+AddPhotoController.$inject = ['$scope', 'PhotosService', '$state'];
 
 exports['default'] = AddPhotoController;
 module.exports = exports['default'];
@@ -82,18 +76,20 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ListController = function ListController($scope, $http, PARSE) {
+var EditController = function EditController($scope, $stateParams, PhotosService, $state) {
 
-  var url = PARSE.URL + 'classes/photo_gallery';
-
-  $http.get(url, PARSE.CONFIG).then(function (res) {
-    $scope.photos = res.data.results;
+  PhotosService.getPhoto($stateParams.photoId).then(function (res) {
+    $scope.singlePhoto = res.data;
   });
+
+  $scope.updatePhoto = function (obj) {
+    PhotosService.update(obj).then(function (res) {
+      $state.go('root.photography');
+    });
+  };
 };
-
-ListController.$inject = ['$scope', '$http', 'PARSE'];
-
-exports['default'] = ListController;
+EditController.$inject = ['$scope', '$stateParams', 'PhotosService', '$state'];
+exports['default'] = EditController;
 module.exports = exports['default'];
 
 },{}],4:[function(require,module,exports){
@@ -102,22 +98,42 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SingleController = function SingleController($scope, $stateParams, $http, PARSE) {
+var ListController = function ListController($scope, PhotosService) {
 
-  var url = PARSE.URL + 'classes/photo_gallery/' + $stateParams.photoId;
-
-  $http.get(url, PARSE.CONFIG).then(function (res) {
-
-    $scope.singlePhoto = res.data;
+  PhotosService.getPhotos().then(function (res) {
+    $scope.photos = res.data.results;
   });
 };
 
-SingleController.$inject = ['$scope', '$stateParams', '$http', 'PARSE'];
+ListController.$inject = ['$scope', 'PhotosService'];
 
-exports['default'] = SingleController;
+exports['default'] = ListController;
 module.exports = exports['default'];
 
 },{}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SingleController = function SingleController($scope, $stateParams, PhotosService, $state) {
+
+  PhotosService.getPhoto($stateParams.photoId).then(function (res) {
+    $scope.singlePhoto = res.data;
+  });
+
+  $scope.deletePhoto = function (obj) {
+    PhotosService['delete'](obj).then(function (res) {
+      console.log(res);
+      $state.go('root.photography');
+    });
+  };
+};
+SingleController.$inject = ['$scope', '$stateParams', 'PhotosService', '$state'];
+exports['default'] = SingleController;
+module.exports = exports['default'];
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -136,10 +152,6 @@ var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-var _controllersListController = require('./controllers/list.controller');
-
-var _controllersListController2 = _interopRequireDefault(_controllersListController);
-
 var _controllersAddphotoController = require('./controllers/addphoto.controller');
 
 var _controllersAddphotoController2 = _interopRequireDefault(_controllersAddphotoController);
@@ -148,15 +160,17 @@ var _controllersSingleController = require('./controllers/single.controller');
 
 var _controllersSingleController2 = _interopRequireDefault(_controllersSingleController);
 
-// $('.oneButton').on('click', function(event){
-//   var btn = $(event.target);
-//   $('.oneButton').siblings().removeClass('notExpanded');
-//   $('.twoButton').siblings().addClass('notExpanded');
-//   $('.threeButton').siblings().addClass('notExpanded');
-//   $('.oneButton').siblings().addClass('expanded');
-//   $('.twoButton').siblings().removeClass('expanded');
-//   $('.threeButton').siblings().removeClass('expanded');
-// });
+var _controllersListController = require('./controllers/list.controller');
+
+var _controllersListController2 = _interopRequireDefault(_controllersListController);
+
+var _controllersEditController = require('./controllers/edit.controller');
+
+var _controllersEditController2 = _interopRequireDefault(_controllersEditController);
+
+var _servicesPhotosService = require('./services/photos.service');
+
+var _servicesPhotosService2 = _interopRequireDefault(_servicesPhotosService);
 
 _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
   URL: 'https://api.parse.com/1/',
@@ -166,9 +180,67 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
       'X-Parse-REST-API-Key': 'yNRzc5FxBRPP3mmC27O7sWI7VruBdfPCg7X9vNug'
     }
   }
-}).config(_config2['default']).controller('ListController', _controllersListController2['default']).controller('AddPhotoController', _controllersAddphotoController2['default']).controller('SingleController', _controllersSingleController2['default']);
+}).config(_config2['default']).controller('ListController', _controllersListController2['default']).controller('AddPhotoController', _controllersAddphotoController2['default']).controller('SingleController', _controllersSingleController2['default']).controller('EditController', _controllersEditController2['default']).service('PhotosService', _servicesPhotosService2['default']);
 
-},{"./config":1,"./controllers/addphoto.controller":2,"./controllers/list.controller":3,"./controllers/single.controller":4,"angular":8,"angular-ui-router":6,"jquery":9}],6:[function(require,module,exports){
+// $('.test').on('click', function(event){
+//   $('.test').removeClass('test');
+//   $('.test').addClass('test2');
+// });
+
+},{"./config":1,"./controllers/addphoto.controller":2,"./controllers/edit.controller":3,"./controllers/list.controller":4,"./controllers/single.controller":5,"./services/photos.service":7,"angular":10,"angular-ui-router":8,"jquery":11}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var PhotosService = function PhotosService($http, PARSE, $state) {
+
+  var url = PARSE.URL + 'classes/photo_gallery';
+
+  this.getPhotos = function () {
+    return $http({
+      url: url,
+      headers: PARSE.CONFIG.headers,
+      method: 'GET',
+      cache: true
+    });
+  };
+
+  this.getPhoto = function (photoId) {
+    return $http({
+      method: 'GET',
+      url: url + '/' + photoId,
+      headers: PARSE.CONFIG.headers,
+      cache: true
+    });
+  };
+
+  var Photo = function Photo(obj) {
+    this.name = obj.name;
+    this.url = obj.url;
+    this.description = obj.description;
+  };
+
+  this.addPhoto = function (obj) {
+    var p = new Photo(obj);
+    return $http.post(url, p, PARSE.CONFIG);
+  };
+
+  this.update = function (obj) {
+    return $http.put(url + '/' + obj.objectId, obj, PARSE.CONFIG);
+  };
+
+  this['delete'] = function (obj) {
+    return $http['delete'](url + '/' + obj.objectId, PARSE.CONFIG);
+  };
+};
+
+PhotosService.$inject = ['$http', 'PARSE', '$state'];
+
+exports['default'] = PhotosService;
+module.exports = exports['default'];
+
+},{}],8:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4539,7 +4611,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33444,11 +33516,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":7}],9:[function(require,module,exports){
+},{"./angular":9}],11:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -42660,7 +42732,7 @@ return jQuery;
 
 }));
 
-},{}]},{},[5])
+},{}]},{},[6])
 
 
 //# sourceMappingURL=main.js.map

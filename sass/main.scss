@@ -7,6 +7,35 @@ body {
   color: #EBEDED;
 }
 
+button {
+  background-color: #D6882D;
+  color: #EBEDED;
+  border: 2px solid #D6882D;
+}
+
+button:hover {
+  background-color: #253842;
+  color: #D6882D;
+  border: 2px solid #D6882D;
+}
+
+
+// .test {
+//   width: 1000px;
+//   height: 100px;
+//   background-color: red;
+// }
+
+// .test2 {
+//   background-color: orange;
+// }
+
+// .other {
+//   width: 1000px;
+//   height: 100px;
+//   background-color: green;
+// }
+
 h1 {
   color: #D6882D;
 }
@@ -18,10 +47,6 @@ h2 {
 .top-bar {
   color: #D6882D;
   background-color: #253842;
-}
-
-.test {
-  background-color: white;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button) {
@@ -38,7 +63,7 @@ h2 {
 }
 
 .container {
-  width: 500px;
+  width: 100%;
   margin: 15px auto;
 
   a {
@@ -46,46 +71,37 @@ h2 {
   }
 }
 
+.home {
+
+  .bigLogo {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
 .photoList {
+  width: 100%;
 
-  .thumbnail {
+  .thumbnailList {
+    width: 100%;
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .thumbnail {
+      height: 200px;
 
-      li {
-        display: inline-block;
-        margin: 10px;
+      img {
         border: 2px solid #D6882D;
+        max-height: 100%;
 
-        img {
-          height: 200px;
-        }
       }
     }
   }
-
-  button {
-    background-color: #D6882D;
-    
-    a {
-      color: #EBEDED;
-    }
-  }
-
-  button:hover {
-    background-color: #253842;
-    a {
-      color: #D6882D;
-    }
-  }
-  
-
 }
 
 .singlePhoto {
+
+  img {
+    max-width: 30%;
+  }
 
   ul {
     list-style: none;
@@ -94,17 +110,8 @@ h2 {
   }
 }
 
-.addPhoto {
-  button {
-    background-color: #D6882D;
-    color: #EBEDED;
-  }
 
-  button:hover {
-    background-color: #253842;
-    color: #D6882D;
-  }
-}
+
 
 
 

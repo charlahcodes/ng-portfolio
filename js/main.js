@@ -1,25 +1,14 @@
 import angular from 'angular';
 import 'angular-ui-router';
-import jquery from 'jquery';
+import $ from 'jquery';
 import configFunct from './config';
-import ListController from './controllers/list.controller';
+
 import AddPhotoController from './controllers/addphoto.controller';
 import SingleController from './controllers/single.controller';
+import ListController from './controllers/list.controller';
+import EditController from './controllers/edit.controller';
 
-
-
-// $('.oneButton').on('click', function(event){
-//   var btn = $(event.target);
-//   $('.oneButton').siblings().removeClass('notExpanded');
-//   $('.twoButton').siblings().addClass('notExpanded');
-//   $('.threeButton').siblings().addClass('notExpanded');
-//   $('.oneButton').siblings().addClass('expanded');
-//   $('.twoButton').siblings().removeClass('expanded');
-//   $('.threeButton').siblings().removeClass('expanded');
-// });
-
-
-
+import PhotosService from './services/photos.service';
 
 
 angular
@@ -37,4 +26,11 @@ angular
   .controller('ListController', ListController)
   .controller('AddPhotoController', AddPhotoController)
   .controller('SingleController', SingleController)
+  .controller('EditController', EditController)
+  .service('PhotosService', PhotosService)
   ;
+
+// $('.test').on('click', function(event){
+//   $('.test').removeClass('test');
+//   $('.test').addClass('test2');
+// });

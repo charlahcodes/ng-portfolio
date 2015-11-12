@@ -1,17 +1,16 @@
-let SingleController = function($scope, $stateParams, $http, PARSE) {
+let SingleController = function($scope, $stateParams, PhotosService, $state) {
   
-  let url = PARSE.URL + 'classes/photo_gallery/' + $stateParams.photoId;
-
-  $http.get(url, PARSE.CONFIG).then( (res) => {
-
+  PhotosService.getPhoto($stateParams.photoId).then( (res) => {
     $scope.singlePhoto = res.data;
-
   });
 
-
+  $scope.deletePhoto = function (obj) {
+    PhotosService.delete(obj).then( (res) => {
+      console.log(res);
+      $state.go('root.photography');
+    });
+  };
 
 };
-
-SingleController.$inject = ['$scope', '$stateParams', '$http', 'PARSE'];
-
+SingleController.$inject = ['$scope', '$stateParams', 'PhotosService', '$state'];
 export default SingleController;

@@ -6391,6 +6391,16 @@ body {
   background: #162B37;
   color: #EBEDED; }
 
+button {
+  background-color: #D6882D;
+  color: #EBEDED;
+  border: 2px solid #D6882D; }
+
+button:hover {
+  background-color: #253842;
+  color: #D6882D;
+  border: 2px solid #D6882D; }
+
 h1 {
   color: #D6882D; }
 
@@ -6400,9 +6410,6 @@ h2 {
 .top-bar {
   color: #D6882D;
   background-color: #253842; }
-
-.test {
-  background-color: white; }
 
 .top-bar-section li:not(.has-form) a:not(.button) {
   background-color: #253842;
@@ -6415,43 +6422,31 @@ h2 {
   color: #D6882D; }
 
 .container {
-  width: 500px;
+  width: 100%;
   margin: 15px auto; }
   .container a {
     color: #EBEDED; }
 
-.photoList .thumbnail ul {
-  list-style: none;
-  margin: 0;
-  padding: 0; }
-  .photoList .thumbnail ul li {
-    display: inline-block;
-    margin: 10px;
-    border: 2px solid #D6882D; }
-    .photoList .thumbnail ul li img {
+.home .bigLogo {
+  max-width: 50%;
+  margin: 0 auto; }
+
+.photoList {
+  width: 100%; }
+  .photoList .thumbnailList {
+    width: 100%; }
+    .photoList .thumbnailList .thumbnail {
       height: 200px; }
+      .photoList .thumbnailList .thumbnail img {
+        border: 2px solid #D6882D;
+        max-height: 100%; }
 
-.photoList button {
-  background-color: #D6882D; }
-  .photoList button a {
-    color: #EBEDED; }
-
-.photoList button:hover {
-  background-color: #253842; }
-  .photoList button:hover a {
-    color: #D6882D; }
+.singlePhoto img {
+  max-width: 30%; }
 
 .singlePhoto ul {
   list-style: none;
   margin: 0;
   padding: 0; }
-
-.addPhoto button {
-  background-color: #D6882D;
-  color: #EBEDED; }
-
-.addPhoto button:hover {
-  background-color: #253842;
-  color: #D6882D; }
 
 /*# sourceMappingURL=main.css.map */

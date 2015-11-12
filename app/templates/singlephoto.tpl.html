@@ -4,4 +4,6 @@
     <li>Title: {{singlePhoto.title}}</li>
     <li>Description: {{singlePhoto.description}}</li>
   </ul>
+  <a href="#/edit/{{ singlePhoto.objectId }}"><button>Edit</button></a>
+  <a href="#" ng-click="deletePhoto(singlePhoto)"><button>Delete</button></a>
 </div>
