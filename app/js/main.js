@@ -182,11 +182,6 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
   }
 }).config(_config2['default']).controller('ListController', _controllersListController2['default']).controller('AddPhotoController', _controllersAddphotoController2['default']).controller('SingleController', _controllersSingleController2['default']).controller('EditController', _controllersEditController2['default']).service('PhotosService', _servicesPhotosService2['default']);
 
-// $('.test').on('click', function(event){
-//   $('.test').removeClass('test');
-//   $('.test').addClass('test2');
-// });
-
 },{"./config":1,"./controllers/addphoto.controller":2,"./controllers/edit.controller":3,"./controllers/list.controller":4,"./controllers/single.controller":5,"./services/photos.service":7,"angular":10,"angular-ui-router":8,"jquery":11}],7:[function(require,module,exports){
 'use strict';
 
@@ -201,8 +196,7 @@ var PhotosService = function PhotosService($http, PARSE, $state) {
     return $http({
       url: url,
       headers: PARSE.CONFIG.headers,
-      method: 'GET',
-      cache: true
+      method: 'GET'
     });
   };
 
@@ -210,8 +204,7 @@ var PhotosService = function PhotosService($http, PARSE, $state) {
     return $http({
       method: 'GET',
       url: url + '/' + photoId,
-      headers: PARSE.CONFIG.headers,
-      cache: true
+      headers: PARSE.CONFIG.headers
     });
   };
 

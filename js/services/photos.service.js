@@ -7,7 +7,6 @@ let PhotosService = function($http, PARSE, $state) {
       url: url,
       headers: PARSE.CONFIG.headers,
       method: 'GET',
-      cache: true
     });
   };
 
@@ -16,7 +15,6 @@ let PhotosService = function($http, PARSE, $state) {
       method: 'GET',
       url: url + '/' + photoId,
       headers: PARSE.CONFIG.headers,
-      cache: true
     });
   };
 

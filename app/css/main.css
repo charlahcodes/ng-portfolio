@@ -6401,11 +6401,15 @@ button:hover {
   color: #EBEDED;
   border: 2px solid #D6882D; }
 
-h1 {
+h4 {
   color: #D6882D; }
 
 h2 {
   color: #D6882D; }
+
+.mainContainer {
+  position: relative;
+  min-height: 100%; }
 
 .top-bar {
   color: #D6882D;
@@ -6424,8 +6428,9 @@ h2 {
   color: #D6882D; }
 
 .container {
-  width: 100%;
-  margin: 15px auto; }
+  max-height: 100%;
+  overflow: hidden;
+  margin: 15px 15px 0 15px; }
   .container a {
     color: #EBEDED; }
 
@@ -6446,44 +6451,72 @@ h2 {
     .home .homeMenu ul li a:hover {
       color: #E08D2E; }
 
+.aboutPage div {
+  width: 60%; }
+
+.codingPage div {
+  width: 60%; }
+
 .photoList {
-  width: 100%; }
-  .photoList .thumbnailList {
-    width: 100%; }
-    .photoList .thumbnailList .thumbnail {
-      height: 200px;
-      margin: 10px 0; }
-      .photoList .thumbnailList .thumbnail img {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 36px; }
+  .photoList .thumbnails ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    .photoList .thumbnails ul li {
+      display: inline-block;
+      margin: 10px; }
+      .photoList .thumbnails ul li img {
+        height: 200px;
         border: 2px solid #162B37;
         max-height: 100%; }
-      .photoList .thumbnailList .thumbnail img:hover {
+      .photoList .thumbnails ul li img:hover {
         border: 2px solid #D6882D; }
 
-.singlePhoto {
-  max-height: 100%; }
-  .singlePhoto .largePhoto {
-    float: left;
-    margin-left: 1.5%; }
-    .singlePhoto .largePhoto img {
-      max-height: 85vh; }
-  .singlePhoto .photoText {
-    float: right; }
-    .singlePhoto .photoText ul {
-      list-style: none;
-      margin: 0;
-      padding: 0; }
-    .singlePhoto .photoText button {
-      margin-top: 67vh; }
+.addPhoto div {
+  text-align: right; }
+  .addPhoto div .addForm {
+    width: 60%; }
+    .addPhoto div .addForm textarea {
+      height: 100px; }
+
+.editPage div {
+  text-align: right; }
+  .editPage div form {
+    width: 60%; }
+    .editPage div form textarea {
+      height: 100px; }
+
+.singlePhoto .largePhoto {
+  height: 85vh; }
+  .singlePhoto .largePhoto img {
+    max-height: 100%; }
+
+.singlePhoto .photoText ul {
+  list-style: none;
+  padding: 0; }
+
+.singlePhoto .photoText button {
+  margin-top: 52.5vh; }
 
 footer {
   clear: both;
-  bottom: 0;
   width: 100%;
-  height: 35px;
-  position: fixed;
-  background-color: #243842; }
+  height: 25px;
+  background-color: #243842;
+  color: #BFC5C8;
+  position: absolute;
+  bottom: 0;
+  left: 0; }
   footer p {
-    text-align: center; }
+    text-align: center;
+    position: relative;
+    top: 50%;
+    font-size: 13px;
+    transform: translateY(-50%);
+    margin: 0; }
     footer p a {
       color: #D6882D; }
 

@@ -30,7 +30,8 @@ angular
   .service('PhotosService', PhotosService)
   ;
 
-// $('.test').on('click', function(event){
-//   $('.test').removeClass('test');
-//   $('.test').addClass('test2');
-// });
+
+
+
+
+

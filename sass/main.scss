@@ -19,29 +19,17 @@ button:hover {
   border: 2px solid #D6882D;
 }
 
-
-// .test {
-//   width: 1000px;
-//   height: 100px;
-//   background-color: red;
-// }
-
-// .test2 {
-//   background-color: orange;
-// }
-
-// .other {
-//   width: 1000px;
-//   height: 100px;
-//   background-color: green;
-// }
-
-h1 {
+h4 {
   color: #D6882D;
 }
 
 h2 {
   color: #D6882D;
+}
+
+.mainContainer {
+  position: relative;
+    min-height: 100%;
 }
 
 .top-bar {
@@ -67,8 +55,9 @@ h2 {
 }
 
 .container {
-  width: 100%;
-  margin: 15px auto;
+  max-height: 100%;
+  overflow: hidden;
+  margin: 15px 15px 0 15px;
 
   a {
     color: #EBEDED;
@@ -107,46 +96,95 @@ h2 {
   }
 }
 
+.aboutPage {
+
+  div {
+    width: 60%;
+  }
+}
+
+.codingPage {
+
+  div {
+    width: 60%;
+  }
+}
+
 .photoList {
   width: 100%;
+  text-align: center;
+  margin-bottom: 36px;
 
-  .thumbnailList {
-    width: 100%;
+  .thumbnails {
 
-    .thumbnail {
-      height: 200px;
-      margin: 10px 0;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
 
-      img {
-        border: 2px solid #162B37;
-        max-height: 100%;
+      li {
+        display: inline-block;
+        margin: 10px;
+
+        img {
+          height: 200px;
+          border: 2px solid #162B37;
+          max-height: 100%;
+        }
+
+        img:hover {
+          border: 2px solid #D6882D;
+        }
       }
+    }
+  }
+}
 
-      img:hover {
-        border: 2px solid #D6882D;
+.addPhoto {
+
+  div {
+    text-align:right;
+    
+    .addForm {
+      width: 60%;
+
+      textarea {
+        height: 100px;
+      }
+    }
+  }
+}
+
+.editPage {
+
+  div {
+    text-align:right;
+    
+    form {
+      width: 60%;
+
+      textarea {
+        height: 100px;
       }
     }
   }
 }
 
 .singlePhoto {
-  max-height: 100%;
 
   .largePhoto {
-    float: left;
-    margin-left: 1.5%;
+    height: 85vh;
 
     img {
-      max-height: 85vh;
+      max-height: 100%;
     }
+
   }
 
   .photoText {
-    float: right;
 
     ul {
       list-style: none;
-      margin: 0;
       padding: 0;
 
       li {
@@ -157,33 +195,33 @@ h2 {
         }
       }
     }
-    button {
 
-      margin-top: 67vh;
+    button {
+      margin-top: 52.5vh;
     }
   }
 }
 
 footer {
   clear: both;
-  bottom: 0;
   width: 100%;
-  height: 35px;
-  position: fixed;
+  height: 25px;
   background-color: #243842;
+  color: #BFC5C8;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 
   p {
     text-align: center;
+    position: relative;
+    top: 50%;
+    font-size: 13px;
+    transform: translateY(-50%);
+    margin: 0;
 
     a {
       color: #D6882D;
     }
   }
 }
-
-
-
-
-
-
-
