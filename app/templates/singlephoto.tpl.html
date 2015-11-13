@@ -1,9 +1,13 @@
 <div class="singlePhoto">
-  <img src="{{singlePhoto.url}}">
-  <ul>
-    <li>Title: {{singlePhoto.title}}</li>
-    <li>Description: {{singlePhoto.description}}</li>
-  </ul>
-  <a href="#/edit/{{ singlePhoto.objectId }}"><button>Edit</button></a>
-  <a href="#" ng-click="deletePhoto(singlePhoto)"><button>Delete</button></a>
+  <div class="largePhoto">
+    <img src="{{singlePhoto.url}}">
+  </div>
+  <div class="photoText">
+    <ul>
+      <li class="photoTitle"><h4>{{singlePhoto.title}}</h4></li>
+      <li class="photoDescription">{{singlePhoto.description}}</li>
+    </ul>
+    <a href="#/edit/{{ singlePhoto.objectId }}"><button>Edit</button></a>
+    <a href="#" ng-click="deletePhoto(singlePhoto)"><button>Delete</button></a>
+  </div>
 </div>
